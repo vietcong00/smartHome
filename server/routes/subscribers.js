@@ -19,7 +19,6 @@ router.get('/', auth(['customer', 'admin']), async (req, res) => {
 router.get('/:id', getSubscriber, (req, res) => {
 	res.send(req.subscriber.name);
 });
-
 //Creating one
 router.post('/', async (req, res) => {
 	const subscriber = new Subscriber({
