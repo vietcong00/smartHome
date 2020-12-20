@@ -10,7 +10,9 @@ const httpServer = require('http').createServer()
 const ws = require('websocket-stream')
 const port = 9001
 
-ws.createServer({ server: httpServer }, aedes.handle)
+ws.createServer({
+	server: httpServer
+}, aedes.handle)
 
 httpServer.listen(port, function () {
 	console.log('websocket local server listening on port ', port)
@@ -47,7 +49,7 @@ const db = mongoose.connection;
 db.on('error', (error) => console.error(error));
 
 var client = mqtt.connect({
-	host: '52.229.154.12',
+	host: 'ithust.xyz',
 });
 
 client.on('connect', function () {
@@ -87,7 +89,7 @@ db.once('open', () => {
 		});
 		try {
 			const savedSensor = await sensor.save();
-			console.log('[Saved DB] =>',savedSensor);
+			console.log('[Saved DB] =>', savedSensor);
 		} catch (err) {
 			console.error(err);
 		}
